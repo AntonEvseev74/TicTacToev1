@@ -20,6 +20,7 @@ public class Main {
 
     private static String[] gameField;      // Ссылочная переменная на массив. Для игрового поля. Массив.
     private static int input;               // Переменная для пользовательского ввода
+    public static final String FREE = " _ ";// Свободная ячейка
     public static final String X = " X ";   // Крестик
     public static final String O = " O ";   // Нолик
     private static boolean checkCell;       // Проверка ячейки. true - свободна, false - не свобона
@@ -122,8 +123,8 @@ public class Main {
 
     /* Проверка ячейки. Свободна или нет. */
     private static boolean checkCell(int indexCell) {
-        if (gameField[indexCell].equals(X) || gameField[indexCell].equals(O)) return false;
-        else return true;
+        if (gameField[indexCell].equals(FREE)) return true;
+        return false;
     } // конец метода checkCell()
 
     /* Отобразить игровое поле в консоли */
@@ -139,7 +140,7 @@ public class Main {
     private static void create() {
         gameField = new String[9]; // Создать массив длинной 9. Это 9 ячеек для поля 3 на 3 ячейки.
         for (int i = 1; i <= gameField.length; i++) {
-            gameField[i - 1] = " _ "; // Заполнить массив начальными символами, обозначающими свободную ячейку.
+            gameField[i - 1] = FREE; // Заполнить массив начальными символами, обозначающими свободную ячейку.
         }
     } // конец метода create()
 } // конец класса Main
